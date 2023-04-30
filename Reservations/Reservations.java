@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JOptionPane;
-import javax.swing.tree.RowMapper;
-import javax.swing.*;
 
 
 public class Reservations extends Frame implements ActionListener
@@ -10,7 +8,7 @@ public class Reservations extends Frame implements ActionListener
     Color lightRed = new Color(255, 90, 90);
     Color lightGreen = new Color(140, 215, 40);
 
-    int roomNonSmoking = 22;
+    int roomNonSmoking = 10;
     int roomSmoking = 3;
 
     Rooms  rooms = new Rooms(roomNonSmoking, roomSmoking);
@@ -45,17 +43,20 @@ public class Reservations extends Frame implements ActionListener
             buttonPanel.setLayout(new FlowLayout());    
             inputPanel.setLayout(new FlowLayout());    
 
-        for(int i= 1; i<(roomNonSmoking+roomSmoking ); i++ )
+            nameField.setText("Jose");
+
+
+        for(int i = 0; i<=(roomNonSmoking+roomSmoking)-1; i++ )
         {
             roomDisplay[i] = new TextArea(null, 3, 5, 3);
             // if(i<6)
-            if(i<roomNonSmoking)
+            if(i<=roomNonSmoking)
             {
-                roomDisplay[i].setText("Room " + i + " Non Smoking");
+                roomDisplay[i].setText("Room " + (i+1) + " Non Smoking");
             }
             else
             {
-                roomDisplay[i].setText("Room "+ i + " Smoking");
+                roomDisplay[i].setText("Room "+ (i+1) + " Smoking");
             }
 
             roomDisplay[i].setEditable(false);
@@ -120,7 +121,7 @@ public class Reservations extends Frame implements ActionListener
     public static void main(String[] args) 
     {
         Reservations reservations = new Reservations();
-        reservations.setBounds(200, 200, 1080, 920);
+        reservations.setBounds(200, 200, 1080, 640);
         reservations.setTitle("Reserve a party Room");
         reservations.setVisible(true);
     }
